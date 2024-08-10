@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"> 
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26" fill="#5f6368">
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                    </svg>
+                </a>
+            </li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="#">Review</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">Siddharth</a></li>
+            <li class="hideOnmobile"><a href="#">Home</a></li>
+            <li class="hideOnmobile"><a href="#">About</a></li>
+            <li class="hideOnmobile"><a href="#">Service</a></li>
+            <li class="hideOnmobile"><a href="#">Review</a></li>
+            <li class="menu-button" onclick="showSidebar()">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26" fill="#5f6368">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+<br>
+    <br>
+    <br>
+    <div class="main-content">
+        <div class="container">
+            <div class="card">
+                <div class="sneaker">
+                    <div class="circle"></div>
+                    <img src="adidas.png" alt="adidas">
+                </div>
+                <div class="info">
+                    <h1 class="title">Adidas</h1>
+                    <h3>FUTURE-READY TRAINERS WITH WRAPPED BOOST FOR EXCEPTIONAL COMFORT.</h3>
+                    <div class="sizes">
+                        <button>22</button>
+                        <button>23</button>       
+                        <button class="active">24</button>
+                        <button>25</button>
+                    </div>
+                    <div class="purchase">
+                        <button>Purchase or Rent</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br><br>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">shipping</a></li>
+                        <li><a href="#">returns</a></li>
+                        <li><a href="#">order status</a></li>
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="#">watch</a></li>
+                        <li><a href="#">bag</a></li>
+                        <li><a href="#">shoes</a></li>
+                        <li><a href="#">dress</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'flex';
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'none';
+        }
+
+        const card = document.querySelector(".card");
+        const container = document.querySelector(".container");
+        const title = document.querySelector(".title");
+        const sneaker = document.querySelector(".sneaker img");
+        const purchase = document.querySelector(".purchase");
+        const description = document.querySelector(".info h3");
+        const sizes = document.querySelector(".sizes");
+
+        container.addEventListener("mousemove", (e) => {
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        container.addEventListener("mouseenter", (e) => {
+            card.style.transition = "none";
+            title.style.transform = "translateZ(150px)";
+            sneaker.style.transform = "translateZ(200px) rotateZ(-45deg)";
+            description.style.transform = "translateZ(125px)";
+            sizes.style.transform = "translateZ(100px)";
+            purchase.style.transform = "translateZ(75px)";
+        });
+
+        container.addEventListener("mouseleave", (e) => {
+            card.style.transition = "all 0.5s ease";
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+            title.style.transform = "translateZ(0px)";
+            sneaker.style.transform = "translateZ(0px) rotateZ(0deg)";
+            description.style.transform = "translateZ(0px)";
+            sizes.style.transform = "translateZ(0px)";
+            purchase.style.transform = "translateZ(0px)";
+        });
+    </script>
+</body>
+</html>
